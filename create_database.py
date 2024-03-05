@@ -37,14 +37,32 @@ c.execute(
 c.execute(
     """INSERT INTO Kundeprofil (Navn, Adresse, Telefonnummer) VALUES ('Ola Nordmann', 'Nordveien 1', 12345678);"""
 )
+c.execute(
+    """
+    CREATE TABLE IF NOT EXISTS Område
+        (id INTEGER PRIMARY KEY, OmrådeNavn TEXT);
+"""
+)
 
-ic(c.execute("""SELECT * FROM Kundeprofil;""").fetchall())
+c.execute(
+    """
+CREATE TABLE IF NOT EXISTS Stol
+    (RadNummer INTEGER, StolNummer INTEGER, SalNummer INTEGER, OmrådeID INTEGER,
+    FOREIGN KEY (SalNummer) REFERENCES Teatersal(SalNummer)
+    FOREIGN KEY (OmrådeID) REFERENCES Område(id),
+    PRIMARY KEY (RadNummer, StolNummer, SalNummer, OmrådeID));
+"""
+)
 
 
 def cleanup():
     c.execute("DROP TABLE Kundeprofil;")
     c.execute("DROP TABLE Billettkjop;")
+    c.execute("DROP TABLE Teatersal;")
+    c.execute("DROP TABLE Område;")
+    c.execute("DROP TABLE Stol;")
     connection.close()
 
 
-# cleanup()
+connection.commit()
+# # cleanup()
