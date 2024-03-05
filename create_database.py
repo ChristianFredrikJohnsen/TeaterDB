@@ -44,6 +44,86 @@ c.execute(
 """
 )
 
+
+c.execute(
+    """CREATE TABLE if NOT EXISTS Person (
+    PersonID        INTEGER PRIMARY KEY AUTOINCREMENT
+                            UNIQUE
+                            NOT NULL,
+    Email           TEXT    NOT NULL
+                            UNIQUE,
+    Name            TEXT    NOT NULL,
+    AnsettelsesForm INTEGER REFERENCES Ansettelse (AnsettelseID) 
+                            NOT NULL
+);"""
+)
+
+
+c.execute(
+    """CREATE TABLE if NOT EXISTS Ansettelse (
+    AnsettelseID INTEGER UNIQUE
+                         NOT NULL
+                         PRIMARY KEY AUTOINCREMENT,
+    Type                 UNIQUE
+                         NOT NULL
+);"""
+)
+
+
+c.execute(
+    """CREATE TABLE if NOT EXISTS Akt (
+    Aktnummer      INTEGER PRIMARY KEY
+                           UNIQUE
+                           NOT NULL,
+    Navn           TEXT,
+    TeaterstykkeID INTEGER REFERENCES Teaterstykke (TeaterstykkeID) 
+                           NOT NULL
+);"""
+)
+
+
+c.execute(
+    """CREATE TABLE if NOT EXISTS Teaterstykke (
+    TeaterstykkeID     INTEGER PRIMARY KEY AUTOINCREMENT
+                   UNIQUE
+                   NOT NULL,
+    Navn   TEXT    NOT NULL,
+    Sesong TEXT    NOT NULL
+);"""
+)
+
+c.execute(
+    """CREATE TABLE if NOT EXISTS Ansvar (
+    PersonID       INTEGER REFERENCES Person (PersonID) 
+                           NOT NULL,
+    TeaterstykkeID INTEGER REFERENCES Teaterstykke (TeaterstykkeID) 
+                           NOT NULL,
+    Ansvarsområde  TEXT    NOT NULL,
+    PRIMARY KEY (
+        PersonID,
+        TeaterstykkeID,
+        Ansvarsområde
+    )
+);"""
+)
+
+c.execute(
+    """CREATE TABLE if NOT EXISTS Roller (
+    PersonID  INTEGER REFERENCES Person (PersonID) 
+                      NOT NULL,
+    AktNummer INTEGER NOT NULL
+                      REFERENCES Akt (Aktnummer),
+    Rollenavn         UNIQUE
+                      NOT NULL,
+    PRIMARY KEY (
+        PersonID,
+        AktNummer,
+        Rollenavn
+    )
+);"""
+)
+
+
 c.execute(
     """
 CREATE TABLE IF NOT EXISTS Stol
