@@ -22,7 +22,7 @@ c.execute("""
 """)
 
 
-c.execute("""CREATE TABLE Person (
+c.execute("""CREATE TABLE if NOT EXISTS Person (
     PersonID        INTEGER PRIMARY KEY AUTOINCREMENT
                             UNIQUE
                             NOT NULL,
@@ -34,7 +34,7 @@ c.execute("""CREATE TABLE Person (
 );""")
 
 
-c.execute("""CREATE TABLE Ansettelse (
+c.execute("""CREATE TABLE if NOT EXISTS Ansettelse (
     AnsettelseID INTEGER UNIQUE
                          NOT NULL
                          PRIMARY KEY AUTOINCREMENT,
@@ -43,7 +43,7 @@ c.execute("""CREATE TABLE Ansettelse (
 );""")
 
 
-c.execute("""CREATE TABLE Akt (
+c.execute("""CREATE TABLE if NOT EXISTS Akt (
     Aktnummer      INTEGER PRIMARY KEY
                            UNIQUE
                            NOT NULL,
@@ -53,7 +53,7 @@ c.execute("""CREATE TABLE Akt (
 );""")
 
 
-c.execute("""CREATE TABLE Teaterstykke (
+c.execute("""CREATE TABLE if NOT EXISTS Teaterstykke (
     TeaterstykkeID     INTEGER PRIMARY KEY AUTOINCREMENT
                    UNIQUE
                    NOT NULL,
@@ -61,7 +61,7 @@ c.execute("""CREATE TABLE Teaterstykke (
     Sesong TEXT    NOT NULL
 );""")
 
-c.execute("""CREATE TABLE Ansvar (
+c.execute("""CREATE TABLE if NOT EXISTS Ansvar (
     PersonID       INTEGER REFERENCES Person (PersonID) 
                            NOT NULL,
     TeaterstykkeID INTEGER REFERENCES Teaterstykke (TeaterstykkeID) 
@@ -74,7 +74,7 @@ c.execute("""CREATE TABLE Ansvar (
     )
 );""")
 
-c.execute("""CREATE TABLE Roller (
+c.execute("""CREATE TABLE if NOT EXISTS Roller (
     PersonID  INTEGER REFERENCES Person (PersonID) 
                       NOT NULL,
     AktNummer INTEGER NOT NULL
