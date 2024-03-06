@@ -14,12 +14,12 @@ VALUES (1, 50);
 """)
 
 c.execute("""
-INSERT INTO Område (id, OmrådeNavn)
+INSERT INTO Omraade (id, OmraadeNavn)
 VALUES (1, 'Balkong');
 """)
 
 c.execute("""
-INSERT INTO Stol (RadNummer, StolNummer, SalNummer, OmrådeID)
+INSERT INTO Stol (RadNummer, StolNummer, SalNummer, OmraadeID)
 VALUES (1, 1, 1, 1);
 """)
 

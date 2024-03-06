@@ -49,9 +49,9 @@ c.execute(
 
 c.execute(
     """
-    CREATE TABLE IF NOT EXISTS Område(
+    CREATE TABLE IF NOT EXISTS Omraade(
         id INTEGER PRIMARY KEY, 
-        OmrådeNavn TEXT);
+        OmraadeNavn TEXT);
     """
 )
 
@@ -61,10 +61,10 @@ c.execute(
         RadNummer INTEGER,
         StolNummer INTEGER,
         SalNummer INTEGER,
-        OmrådeID INTEGER,
+        OmraadeID INTEGER,
         FOREIGN KEY (SalNummer) REFERENCES Teatersal(SalNummer) ON DELETE CASCADE ON UPDATE CASCADE,
-        FOREIGN KEY (OmrådeID) REFERENCES Område(id) ON DELETE CASCADE ON UPDATE CASCADE,
-        PRIMARY KEY (RadNummer, StolNummer, SalNummer, OmrådeID));
+        FOREIGN KEY (OmraadeID) REFERENCES Omraade(id) ON DELETE CASCADE ON UPDATE CASCADE,
+        PRIMARY KEY (RadNummer, StolNummer, SalNummer, OmraadeID));
     """
 )
 
@@ -192,7 +192,7 @@ def cleanup():
     c.execute("DROP TABLE Kundeprofil;")
     c.execute("DROP TABLE Billettkjop;")
     c.execute("DROP TABLE Teatersal;")
-    c.execute("DROP TABLE Område;")
+    c.execute("DROP TABLE Omraade;")
     c.execute("DROP TABLE Stol;")
     connection.close()
 
