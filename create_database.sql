@@ -140,7 +140,19 @@ CREATE TABLE IF NOT EXISTS Prisklasse (
 -- Proposed solution: Give each  of the weak classes its own unique identifier.
 
 
---     CREATE TABLE if NOT EXISTS Billett 
+CREATE TABLE IF NOT EXISTS Billett(
+    BillettkjopId INTEGER REFERENCES Billettkjop(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    StolId INTEGER REFERENCES Stol (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FremvisningId INTEGER REFERENCES Fremvisning (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    KundeGruppeNavn TEXT REFERENCES Kundegruppe (Navn) ON DELETE CASCADE ON UPDATE CASCADE,
+    TeaterStykkeId INTEGER REFERENCES TeaterStykke (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT billett_primary_key PRIMARY KEY (BillettkjopId, StolId),
+    CONSTRAINT billett_foreign_key FOREIGN KEY (FremvisningId, KundeGruppeNavn, TeaterStykkeId)
+    REFERENCES Fremvisning (id), Kundegruppe (Navn), TeaterStykke (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+);
+
 
 
 
