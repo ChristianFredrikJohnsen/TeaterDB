@@ -89,14 +89,11 @@ CREATE TABLE if NOT EXISTS Ansvar (
 );
  
 
-
 CREATE TABLE IF NOT EXISTS Fremvisning (
+    FremvisningsID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     TeaterstykkeID INTEGER REFERENCES Teaterstykke (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    Dato TEXT NOT NULL,
-    Tid TEXT NOT NULL,
     SalNummer INTEGER REFERENCES Teatersal (SalNummer) ON DELETE CASCADE ON UPDATE CASCADE,
-
-    PRIMARY KEY (TeaterstykkeID, Dato, Tid)
+    Dato TIMESTAMP NOT NULL
 );
    
 
@@ -122,9 +119,4 @@ CREATE TABLE IF NOT EXISTS Billett(
     PrisklasseId INTEGER REFERENCES Prisklasse (id) ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY (StolId, FremvisningId)
 );
-
-
-
-
-
 
