@@ -3,7 +3,7 @@ from icecream import ic
 
 connection = sqlite3.connect("teater.db")
 c = connection.cursor()
-
+c.execute("PRAGMA foreign_keys = ON;")
 
 ### Bilett avdelingen kommer her ###
 c.execute(
