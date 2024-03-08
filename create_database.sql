@@ -5,12 +5,6 @@ CREATE TABLE if NOT EXISTS Kundeprofil (
     Telefonnummer INTEGER
 );
 
-
--- Some comments:
--- On delete cascade: If a row in the parent table is deleted, then the corresponding rows in the child table are also deleted.
--- On update cascade: If a row in the parent table is updated, then the corresponding rows in the child table are also updated to match the new value in the parent table.
--- https://www.sqlitetutorial.net/sqlite-foreign-key/
-
 CREATE TABLE IF NOT EXISTS Billettkjop (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 
     KundeID INTEGER REFERENCES Kundeprofil(id) ON DELETE CASCADE ON UPDATE CASCADE, 
