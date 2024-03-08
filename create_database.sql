@@ -55,7 +55,7 @@ CREATE TABLE if NOT EXISTS Person (
     id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     Epost TEXT NOT NULL,
     Navn TEXT NOT NULL,
-    AnsettelsesForm INTEGER REFERENCES Ansettelse (id) ON DELETE CASCADE ON UPDATE CASCADE
+    AnsettelsesFormId INTEGER REFERENCES Ansettelse (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -126,6 +126,17 @@ CREATE TABLE IF NOT EXISTS Billett(
     BillettkjopId INTEGER REFERENCES Billettkjop(id) ON DELETE CASCADE ON UPDATE CASCADE,
     StolId INTEGER REFERENCES Stol (id) ON DELETE CASCADE ON UPDATE CASCADE,
     FremvisningId INTEGER REFERENCES Fremvisning (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    PrisklasseId INTEGER REFERENCES Prisklasse (id) ON DELETE CASCADE ON UPDATE CASCADE,
-    PRIMARY KEY (StolId, FremvisningId)
+    KundeGruppeNavn TEXT REFERENCES Kundegruppe (Navn) ON DELETE CASCADE ON UPDATE CASCADE,
+    TeaterStykkeId INTEGER REFERENCES TeaterStykke (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT billett_primary_key PRIMARY KEY (BillettkjopId, StolId),
+    CONSTRAINT billett_foreign_key FOREIGN KEY (FremvisningId, KundeGruppeNavn, TeaterStykkeId)
+    REFERENCES Fremvisning (id), Kundegruppe (Navn), TeaterStykke (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
 );
+
+
+
+
+
+
