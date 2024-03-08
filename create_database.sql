@@ -17,9 +17,6 @@ CREATE TABLE IF NOT EXISTS Billettkjop (
     Kjopstidspunkt TIMESTAMP NOT NULL
 );
 
-
--- Add foreign key to Fremvisning at a later stage.
-
 CREATE TABLE IF NOT EXISTS Teatersal (
     SalNummer INTEGER PRIMARY KEY, 
     AntallPlasser INTEGER
