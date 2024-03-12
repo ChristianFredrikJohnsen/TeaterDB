@@ -2,6 +2,7 @@
 
 1. Python3 installed
 2. gitbash, linux terminal or mac-terminal (to run shell-script)
+3. SQLite installed
 
 ## How to run initialization program:
 
