@@ -1,8 +1,8 @@
 -- Nine tickets for adults for the play "Størst av alt er kjærligheten" on the 3rd of february 2024.
 -- The chairs must be next to each other on the same row.
 
-INSERT INTO Billettkjop (kundeID, kjopstidspunkt) VALUES
-    (2, "2024-02-03 18:20:00");
+INSERT INTO Billettkjop (KundeID, Kjopstidspunkt) VALUES
+    (2, '2024-02-03 18:20:00');
 
 INSERT INTO Billett (BillettkjopID, FremvisningID, PrisklasseID, StolID) VALUES
     (2, 6, 6, 658),
