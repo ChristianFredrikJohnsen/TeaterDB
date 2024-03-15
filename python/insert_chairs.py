@@ -1,5 +1,4 @@
 import sqlite3
-from icecream import ic
 # Kobling til databasen
 connection = sqlite3.connect('../trondheim-teater.db')
 c = connection.cursor()

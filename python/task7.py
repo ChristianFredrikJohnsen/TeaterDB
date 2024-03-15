@@ -28,7 +28,6 @@ def main(actor_name: str) -> None:
     for data in actors_in_same_act:
         print(data)
 
-if __name__ == "__main__":
-    # Used in the shell script
+if __name__ == "__main__": # Used by shell script
     actor_name = input()
     main(actor_name)

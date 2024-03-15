@@ -28,5 +28,6 @@ total_price = c.execute('''
     Billett JOIN Prisklasse ON Billett.PrisklasseID = Prisklasse.id 
     WHERE BillettkjopID = 3;
 ''').fetchone()[0]
+
 print("\nPython implementation of Task 3:")
 print(f"The total price for purchasing 9 ordinary tickets is:\n{total_price}")
