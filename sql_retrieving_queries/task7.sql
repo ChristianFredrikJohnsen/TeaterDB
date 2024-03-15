@@ -1,0 +1,4 @@
+-- Du skal lage et Pythonprogram (og SQL) som tar et 
+-- skuespillernavn og finner  hvilke skuespilllere 
+-- de har spilt med i samme akt. Skriv ut navn på 
+-- begge og  hvilket skuespill det skjedde. 

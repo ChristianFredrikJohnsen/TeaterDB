@@ -16,3 +16,19 @@ INSERT INTO Akt (TeaterstykkeID, Aktnummer, Navn) VALUES
     (1, 4, NULL),
     (1, 5, NULL),
     (2, 1, NULL);
+
+INSERT INTO Fremvisning (TeaterstykkeID, SalNummer, Tidspunkt) VALUES
+    -- Kongsemnene, Hovedscenen
+    (1, 1, '2024-02-01 19:00:00'),
+    (1, 1, '2024-02-02 19:00:00'),
+    (1, 1, '2024-02-03 19:00:00'),
+    (1, 1, '2024-02-05 19:00:00'),
+    (1, 1, '2024-02-06 19:00:00'),
+
+    -- Kjærligheten, Gamle Scene
+    (2, 2, '2024-02-03 18:30:00'),
+    (2, 2, '2024-02-06 18:30:00'),
+    (2, 2, '2024-02-07 18:30:00'),
+    (2, 2, '2024-02-12 18:30:00'),
+    (2, 2, '2024-02-13 18:30:00'),
+    (2, 2, '2024-02-14 18:30:00');
