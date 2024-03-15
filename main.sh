@@ -53,6 +53,9 @@ sqlite3 trondheim-teater.db < ./sql_retrieving_queries/task5.sql > ./output/task
 sqlite3 trondheim-teater.db < ./sql_retrieving_queries/task6.sql > ./output/task6.txt
 
 # Task 7
+
+echo "Which actor would you like to find other actors in the same act for? Please enter the response in this format: 'First Name Last Name'\n"
+echo "Example: 'Arturo Scotti'"
 (cd ./python && python task7.py) > ./output/task7.txt
 
 echo "All tasks completed successfully! Check the output folder for the results."

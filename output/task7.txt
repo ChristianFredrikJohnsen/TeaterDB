@@ -1,1 +1,11 @@
-[('Arturo Scotti', 'Ingunn Beate Steige Øyen', 'Kongsemnene'), ('Arturo Scotti', 'Hans Petter Nilsen', 'Kongsemnene'), ('Arturo Scotti', 'Madelein Brantzæg Nilsen', 'Kongsemnene'), ('Arturo Scotti', 'Synnøve Fossum Eriksen', 'Kongsemnene'), ('Arturo Scotti', 'Emma Caroline Deichmann', 'Kongsemnene'), ('Arturo Scotti', 'Thomas Jensen Takyi', 'Kongsemnene'), ('Arturo Scotti', 'Per Bogstad Gulliksen', 'Kongsemnene'), ('Arturo Scotti', 'Isak Holmen Sørensen', 'Kongsemnene'), ('Arturo Scotti', 'Fabian Heidelberg Lunde', 'Kongsemnene'), ('Arturo Scotti', 'Emil Olafsson', 'Kongsemnene'), ('Arturo Scotti', 'Snorre Ryen Tøndel', 'Kongsemnene')]
+('Hans Petter Nilsen', 'Arturo Scotti', 'Kongsemnene')
+('Hans Petter Nilsen', 'Ingunn Beate Steige Øyen', 'Kongsemnene')
+('Hans Petter Nilsen', 'Madelein Brantzæg Nilsen', 'Kongsemnene')
+('Hans Petter Nilsen', 'Synnøve Fossum Eriksen', 'Kongsemnene')
+('Hans Petter Nilsen', 'Emma Caroline Deichmann', 'Kongsemnene')
+('Hans Petter Nilsen', 'Thomas Jensen Takyi', 'Kongsemnene')
+('Hans Petter Nilsen', 'Per Bogstad Gulliksen', 'Kongsemnene')
+('Hans Petter Nilsen', 'Isak Holmen Sørensen', 'Kongsemnene')
+('Hans Petter Nilsen', 'Fabian Heidelberg Lunde', 'Kongsemnene')
+('Hans Petter Nilsen', 'Emil Olafsson', 'Kongsemnene')
+('Hans Petter Nilsen', 'Snorre Ryen Tøndel', 'Kongsemnene')

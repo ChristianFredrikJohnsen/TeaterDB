@@ -1,6 +1,6 @@
 The price of nine ordinary tickets for the play 'Størst av alt er kjærligheten' on the 3rd of February is: 
 3150
 
-Python implementation of Task 3)
+Python implementation of Task 3:
 The total price for purchasing 9 ordinary tickets is:
 3150
