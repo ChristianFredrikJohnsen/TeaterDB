@@ -1,17 +1,30 @@
 #!/bin/bash
 
+# Remove database if it exists
 if [ -f trondheim-teater.db ]; then
-    echo "Deleting old file..."
+    echo "Deleting old database file..."
     rm trondheim-teater.db
 else
-    echo "No existing file to delete. Proceeding..."
+    echo "No existing database file to delete. Proceeding..."
 fi
+
+# Remove output folder if it exists
+if [ -d output ]; then
+    echo "Deleting old output folder..."
+    rm -r output
+else
+    echo "No existing output folder to delete. Proceeding..."
+fi
+
+#############################################################
+#############################################################
 
 echo "Initialising database and creating tables"
 sqlite3 trondheim-teater.db < ./sql_inserts/create_database.sql
 
-# Task1 - Insert theater data into databse.
 echo "Inserting data into database"
+
+# Task1 - Insert theater data into databse.
 sqlite3 trondheim-teater.db < ./sql_inserts/teater_insert.sql
 sqlite3 trondheim-teater.db < ./sql_inserts/roles_and_responsibilities_insert.sql
 sqlite3 trondheim-teater.db < ./sql_inserts/customer_insert.sql
@@ -28,12 +41,15 @@ echo "Querying database"
 # Task4 - Takes a date as input, and returns the plays which are performed on that date, and the number of tickets sold for each play.
 # (cd ./python && python task4.py)
 
+mkdir output
 # Task 5 - Find actor names and their character names in different plays.
-sqlite3 trondheim-teater.db < ./sql_retrieving_queries/task5.sql
+sqlite3 trondheim-teater.db < ./sql_retrieving_queries/task5.sql > ./output/task5.txt
 
 # Task 6 - Find name of play and number of tickets sold for each play.
-sqlite3 trondheim-teater.db < ./sql_retrieving_queries/task6.sql
+sqlite3 trondheim-teater.db < ./sql_retrieving_queries/task6.sql > ./output/task6.txt
 
 # Task 7
-(cd ./python && python task7.py)
+(cd ./python && python task7.py) > ./output/task7.txt
+
+echo "All tasks completed successfully! Check the output folder for the results."
 
