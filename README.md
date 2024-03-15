@@ -13,7 +13,11 @@
 
 ## Group Members
 
-Group290: Christian Fredrik Johnsen, Kacper Pawlowksi, Oskar Emil Wavold
+Group290:
+
+- Christian Fredrik Johnsen
+- Kacper Pawlowksi
+- Oskar Emil Wavold
 
 ## Requirements 🛠️
 
