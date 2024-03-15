@@ -4,28 +4,30 @@
 
 - [Teater Database](#teater-database)
   - [Table of contents 📚](#table-of-contents-)
+  - [Group Members](#group-members)
   - [Requirements 🛠️](#requirements-️)
-  - [How to run initialization program ⚡](#how-to-run-initialization-program-)
-  - [SQLite3 project](#sqlite3-project)
-  - [Backup solution, in case shellscript doesn't work](#backup-solution-in-case-shellscript-doesnt-work)
+  - [How to run ⚡](#how-to-run-)
+  - [View the results](#view-the-results)
   - [Baard bratte](#baard-bratte)
 
-## Requirements 🛠️
-
-1. Python3 installed
-2. gitbash, linux terminal or mac-terminal (to run shell-script)
-3. SQLite3 installed
-
-## How to run initialization program ⚡
-
-1. Open a terminal fit requirements and navigate to `TEATERDB` - folder
-2. Run `sh create_and_fetch.sh` to create the database, add tables and insert data.
-
-## SQLite3 project
+## Group Members
 
 Group290: Christian Fredrik Johnsen, Kacper Pawlowksi, Oskar Emil Wavold
 
-## Backup solution, in case shellscript doesn't work
+## Requirements 🛠️
+
+1. Python3
+2. SQLite3
+3. gitbash, linux terminal or mac-terminal (to run shell-script)
+
+## How to run ⚡
+
+1. Open a terminal which fits the requirements and navigate to `TEATERDB` - folder
+2. Run `sh main.sh` to create the database, insert data, and make queries.
+  
+## View the results
+
+All of the outputs from the different queries will be stored in the `output` folder.
 
 ## Baard bratte
 

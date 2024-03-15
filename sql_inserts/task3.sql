@@ -15,12 +15,6 @@ INSERT INTO Billett (BillettkjopID, FremvisningID, PrisklasseID, StolID) VALUES
     (2, 6, 6, 665),
     (2, 6, 6, 666);
 
--- We used the following query to find the stolID of the first chair:
-
--- SELECT * FROM Stol WHERE
---     omraadeid = 3 AND
---     radnummer = 1 AND
---     stolnummer = 8;
-
--- TODO: Find the total price of the purchase.
-
+SELECT SUM(Pris) FROM 
+Billett JOIN Prisklasse ON Billett.PrisklasseID = Prisklasse.id 
+WHERE BillettkjopID = 2;

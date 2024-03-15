@@ -30,6 +30,6 @@ c.close()
 connection.close()
 
 # Skriv ut resultatet
-print("\nNavnet på teaterstykket og antall solgte billetter for fremvisningene på", dato, "er:")
+print("\nNavnet på teaterstykket og antall solgte billetter for fremvisningene på", dato, "er:\n")
 for show in shows:
     print(show[0]+":", show[1], "billetter")

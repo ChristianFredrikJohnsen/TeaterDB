@@ -21,27 +21,31 @@ fi
 
 echo "Initialising database and creating tables"
 sqlite3 trondheim-teater.db < ./sql_inserts/create_database.sql
+mkdir output
 
 echo "Inserting data into database"
 
 # Task1 - Insert theater data into databse.
-sqlite3 trondheim-teater.db < ./sql_inserts/teater_insert.sql
+sqlite3 trondheim-teater.db < ./sql_inserts/theater_insert.sql
 sqlite3 trondheim-teater.db < ./sql_inserts/roles_and_responsibilities_insert.sql
 sqlite3 trondheim-teater.db < ./sql_inserts/customer_insert.sql
 
-# Task (1 + 2) - Insert the chairs, and the reservations for the plays on the 3rd of February.
+# Task (1 + 2) - Insert chairs into the database, and add the reservations for the plays on the 3rd of February.
 (cd ./python && python insert_chairs.py )
 
 # Task 3 - Buy nine tickets for the play "Størst av alt er kjærligheten" on the 3rd of February.
-# The seats must not be already reserved.
-sqlite3 trondheim-teater.db < ./sql_inserts/task3.sql
+# The seats must not be already reserved. Returns the total price of the tickets.
+# Must be done in both SQL and Python.
+
+echo "The price of nine ordinary tickets for the play 'Størst av alt er kjærligheten' on the 3rd of February is: " > ./output/task3.txt
+sqlite3 trondheim-teater.db < ./sql_inserts/task3.sql >> ./output/task3.txt # SQL version
+(cd ./python && python task3.py) >> ./output/task3.txt # Python version
 
 echo "Querying database"
 
 # Task4 - Takes a date as input, and returns the plays which are performed on that date, and the number of tickets sold for each play.
-# (cd ./python && python task4.py)
+(cd ./python && python task4.py)
 
-mkdir output
 # Task 5 - Find actor names and their character names in different plays.
 sqlite3 trondheim-teater.db < ./sql_retrieving_queries/task5.sql > ./output/task5.txt
 
