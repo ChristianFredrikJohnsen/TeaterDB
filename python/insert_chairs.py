@@ -38,15 +38,15 @@ def omraade_insert(c: sqlite3.Cursor, omraade_name: str, id: str) -> None:
     return omraade_id
 
 
-#Setter inn data for sal som fortsatter med samme teller over stolene over flere rader.
-#Dvs. at den starter ikke med plassnummer 1 for hver rad.
-#input_path: path til filen som inneholder salen
-#antall_plasser: antall plasser i salen
-#sal_nummer: salnummeret
+#Inserts data for a room that continues with the same counter over the chairs over several rows.
+#So that it does not start with place-number 1 in each row.
+#input_path: path to the file containing the hall
+#total_chairs: number of places in the hall
+#sal_nummer: hall number
 #billettkjopID: billettkjopID
 #fremvisningID: fremvisningID
 #prisklasseID: prisklasseID
-def load_hovedscenen(input_path: str, c: sqlite3.Cursor, antall_plasser: int, sal_nummer: int, billettkjopID: int, fremvisningID: int, prisklasseID: int) -> None:
+def load_hovedscenen(input_path: str, c: sqlite3.Cursor, total_chairs: int, sal_nummer: int, billettkjopID: int, fremvisningID: int, prisklasseID: int) -> None:
     global omraade_id
     global area_names
     global stol_id
@@ -55,41 +55,41 @@ def load_hovedscenen(input_path: str, c: sqlite3.Cursor, antall_plasser: int, sa
 
     get_number_of_rows_in_areas(input_path, rows)
 
-    #Itererer gjennom filen og setter inn data i databasen for hver stol
+    #Iterates through the file and inserts data into the database for each chair
     for line in open(input_path):
         if (line.startswith("Dato")):
             continue
         slicedline = line.rstrip("\n")
         
-        #Hvis linjen ikke starter med et tall og ikke er en rad med x-er, så er det et nytt område
+        #If the line does not start with a number, then it is a new area
         if (not slicedline[0].isdigit()):
             omraade_id = omraade_insert(c, slicedline, local_omraade_id)
             local_omraade_id += 1
 
-        #Hvis linjen ikke er et område, så er det en rad med stoler
+        #If the line is not an area, then it is a row of chairs
         else:
             slicedline = slicedline[::-1]
             for i in range(0, len(slicedline)):
-                #Hvis det er en stol, så setter vi inn stol i databasen
+                #If it is a chair (not an x), then we insert the chair into the database
                 if (slicedline[i] != "x"):
                     stol_id += 1
                     c.execute("""
                     INSERT INTO Stol (Id, RadNummer, StolNummer, SalNummer, OmraadeID)
                     VALUES (?, ?, ?, ?, ?);
-                    """, (stol_id, rows[local_omraade_id], antall_plasser, sal_nummer, omraade_id))
+                    """, (stol_id, rows[local_omraade_id], total_chairs, sal_nummer, omraade_id))
                     if (slicedline[i] == "1"):
                         c.execute("""
                         INSERT INTO Billett (BillettkjopID, StolId, FremvisningId, PrisklasseId)
                         VALUES (?, ?, ?, ?);
                         """, (billettkjopID, stol_id, fremvisningID, prisklasseID))
-                antall_plasser -= 1
+                total_chairs -= 1
             rows[local_omraade_id] -= 1
 
 
-#Setter inn data for sal som har forskjellige tellere over stolene over flere rader.
-#Dvs. at den starter med plassnummer 1 for hver rad.
-#input_path: path til filen som inneholder salen
-#sal_nummer: salnummeret
+#Inserts data for hall that has different counters above the chairs over several rows.
+#So that it does not start with place-number 1 in each row.
+#input_path: path to the file containing the hall
+#sal_nummer: hall number
 #billettkjopID: billettkjopID
 #fremvisningID: fremvisningID
 #prisklasseID: prisklasseID    
@@ -99,30 +99,30 @@ def load_gamle_scene(input_path: str, c: sqlite3.Cursor, sal_nummer: int, billet
     global stol_id
     rows: list[int] = []
     local_omraade_id = -1
-    antall_plasser = 0
+    total_chairs = 0
     plass_nummer = 0
 
     get_number_of_rows_in_areas(input_path, rows)
     
-    #Itererer gjennom filen og setter inn data i databasen for hver stol
+    #Iterates through the file and inserts data into the database for each chair
     for line in open(input_path):
         if (line.startswith("Dato")):
             continue
         plass_nummer = 0
         slicedline = line.rstrip("\n")
-        #Hvis linjen ikke starter med et tall og ikke er en rad med x-er, så er det et nytt område
+        #If the line does not start with a number, then it is a new area
         
         if (not slicedline[0].isdigit()):
             omraade_id = omraade_insert(c, slicedline, local_omraade_id)
             local_omraade_id += 1
         
-        #Hvis linjen ikke er et område, så er det en rad med stoler
+        #If the line is not an area, then it is a row of chairs
         else:
             for i in range(0, len(slicedline)):
-                #Hvis det er en stol, så setter vi inn stol i databasen
+                #If it is a chair (not an x), then we insert the chair into the database
                 if slicedline[i] != "x":
                     plass_nummer += 1
-                    antall_plasser += 1
+                    total_chairs += 1
                     stol_id += 1
                     c.execute("""
                     INSERT INTO Stol (Id, RadNummer, StolNummer, SalNummer, OmraadeID)
