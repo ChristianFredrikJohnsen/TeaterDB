@@ -31,7 +31,10 @@ Group290:
 2. Run `sh main.sh` to create the database, insert data, and make queries. The shellscript will prompt you to provide two inputs:
    - A date in the format `YYYY-MM-DD`
    - A name in the format `Firstname Lastname`
-  
+
+- Alternatively, to run in gitbash, open gitbash in the TeaterDB folder
+  type "chmod +x main.sh" to create an executable and type "./main.sh" to create the database, insert data, and make queries.
+
 ## View the results
 
 All of the outputs from the different queries will be stored in the `output` folder.
