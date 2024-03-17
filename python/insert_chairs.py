@@ -12,6 +12,7 @@ stol_id: int = 0
 def get_number_of_rows_in_areas(input_path: str, rows: list) -> None:
     """
     Finds the number of rows in each area.
+    IMPORTANT: Does not return anything, but modifies the rows list.
     """
     for line in open(input_path):
         if (line.startswith("Dato")):
@@ -110,8 +111,8 @@ def load_gamle_scene(input_path: str, c: sqlite3.Cursor, sal_nummer: int, billet
             continue
         plass_nummer = 0
         slicedline = line.rstrip("\n")
-        #If the line does not start with a number, then it is a new area
         
+        #If the line does not start with a number, then it is a new area
         if (not slicedline[0].isdigit()):
             omraade_id = omraade_insert(c, slicedline, local_omraade_id)
             local_omraade_id += 1

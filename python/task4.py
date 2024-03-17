@@ -1,4 +1,5 @@
 import sqlite3
+import sys
 
 def get_shows(dato: str, c: sqlite3.Cursor) -> list[tuple]:
     """
@@ -30,6 +31,9 @@ def main(dato: str) -> None:
     c.close()
     connection.close()
 
-if __name__ == '__main__': # Used by shell script
-    dato = input()
-    main(dato)
+if __name__ == '__main__':
+    if len(sys.argv) > 1: # Run manually
+        main(sys.argv[1])
+    else: # Used by shell script
+        dato = input()
+        main(dato)

@@ -1,4 +1,5 @@
 import sqlite3
+import sys
 
 # Du skal lage et Pythonprogram (og SQL) som tar et 
 # skuespillernavn og finner  hvilke skuespilllere 
@@ -28,6 +29,9 @@ def main(actor_name: str) -> None:
     for data in actors_in_same_act:
         print(data)
 
-if __name__ == "__main__": # Used by shell script
-    actor_name = input()
-    main(actor_name)
+if __name__ == "__main__":
+    if len(sys.argv) > 1: # Run manually
+        main(sys.argv[1])
+    else: # Used by shell script
+        actor_name = input()
+        main(actor_name)
